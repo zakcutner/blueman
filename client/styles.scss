@@ -1,4 +1,5 @@
-$primary: #0af;
+$primary: #22A7F0;
+$secondary: #2574A9;
 $white: #fff;
 $dark: #222;
 
@@ -11,6 +12,57 @@ $dark: #222;
 }
 
 body {
+    padding: 30px;
     background: $primary;
     color: $white;
+    font-family: "Open Sans";
+    font-weight: 400;
+    overflow: hidden;
+
+    .question {
+        .no {
+            display: inline-block;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: $secondary;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 38px;
+            color: $white;
+
+            strong {
+                font-weight: 700;
+            }
+        }
+    }
+
+    .answers {
+        position: absolute;
+        bottom: 30px; left: 30px; right: 30px;
+
+        a {
+            display: block;
+            background: $white;
+            color: $primary;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 15px;
+            text-align: center;
+            text-transform: uppercase;
+
+            &#no {
+                background: $secondary;
+                color: $white;
+                margin-top: 15px;
+            }
+        }
+    }
 }
