@@ -1,5 +1,5 @@
-$primary: #22A7F0;
-$secondary: #2574A9;
+$primary: #22a7f0;
+$secondary: #2574a9;
 $white: #fff;
 $dark: #222;
 
@@ -20,26 +20,75 @@ body {
     overflow: hidden;
 
     .question {
-        .no {
-            display: inline-block;
+        .nos {
+            display: flex;
+            align-items: center;
+
+            span {
+                flex-shrink: 0;
+                position: relative;
+                background: $secondary;
+                color: $primary;
+                border-radius: 50%;
+                height: 45px;
+                width: 45px;
+                line-height: 45px;
+                text-align: center;
+                font-weight: 800;
+                font-size: 14px;
+
+                &:not(:last-of-type) {
+                    margin-right: 20px;
+
+                    &:after {
+                        position: absolute;
+                        top: 20.5px;
+                        right: -20px;
+                        content: "";
+                        background: $secondary;
+                        height: 2px;
+                        width: 20px;
+                    }
+                }
+
+                &:first-of-type {
+                    background: $white;
+                    color: $primary;
+                    height: 55px;
+                    width: 55px;
+                    line-height: 55px;
+                    font-size: 20px;
+
+                    &:after {
+                        top: 25.5px;
+                    }
+                }
+            }
         }
 
         h1 {
             font-weight: 700;
-            font-size: 22px;
+            font-size: 20px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin: 20px 0 10px 0;
             color: $secondary;
         }
 
         p {
             font-weight: 300;
-            font-size: 38px;
+            font-size: 34px;
             color: $white;
 
             strong {
                 font-weight: 700;
             }
+        }
+
+        img {
+            background: $secondary;
+            width: 100%;
+            height: 110px;
+            margin-top: 20px;
         }
     }
 
@@ -53,15 +102,15 @@ body {
             color: $primary;
             text-decoration: none;
             font-weight: 700;
-            font-size: 18px;
-            padding: 15px;
+            font-size: 16px;
+            padding: 12px 0;
             text-align: center;
             text-transform: uppercase;
 
             &#no {
                 background: $secondary;
                 color: $white;
-                margin-top: 15px;
+                margin-top: 10px;
             }
         }
     }
