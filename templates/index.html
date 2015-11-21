@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
 
         <title>blueman</title>
     </head>
@@ -21,7 +21,7 @@
             <a id="no" href="#">No</a>
         </div>
 
-        <script src="jquery-2.1.4.min.js"></script>
-        <script src="scripts.js"></script>
+        <script src="{{url_for('static', filename='jquery-2.1.4.min.js')}}"></script>
+        <script src="{{url_for('static', filename='scripts.js')}}"></script>
     </body>
 </html>

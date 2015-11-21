@@ -7,7 +7,7 @@ var question = {
     },
 
     submit: function(answer) {
-        $.post('http://192.168.108.100:5000/api/', {uuid: uuid, answer: answer}, function(data) {
+        $.post('/api/', {uuid: uuid, answer: answer}, function(data) {
             question.init(data.question);
         });
     }
@@ -16,7 +16,7 @@ var question = {
 $(document).ready(function() {
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            $.post('http://192.168.108.100:5000/api/', {
+            $.post('/api/', {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             }, function(data) {

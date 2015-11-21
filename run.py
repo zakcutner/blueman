@@ -17,6 +17,11 @@ questions = {
 }
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/api/', methods=['POST'])
 def start():
     if 'uuid' in request.form:
