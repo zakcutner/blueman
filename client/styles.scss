@@ -1,0 +1,16 @@
+$primary: #0af;
+$white: #fff;
+$dark: #222;
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $primary;
+    color: $white;
+}
