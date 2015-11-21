@@ -8,5 +8,20 @@
     </head>
     <body>
         <script src="scripts.js"></script>
+        <div class="diagrams">
+            {% for image in images %}
+                <img src="{{url_for('static', filename='images/{0}'.format(image.path))}}" alt="{{image.alt}}">
+            {% endfor %}
+        </div>
+
+        <div class="question">
+            {{question}}
+        </div>
+
+        <div class="answers">
+            {% for answer in answers %}
+                <a href="{{answer.path}}" class="answer">{{answer.text}}</a>
+            {% endfor %}
+        </div>
     </body>
 </html>
