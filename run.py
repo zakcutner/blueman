@@ -10,6 +10,8 @@ app = Flask(__name__)
 from models import Question, Statement
 
 pages = {
+    'holder': Question(id='holder', image='badge.png', text='With a blue badge holder?',
+                       result_yes='road', result_no='none'),
     'road': Question(id='road', image='road.png', text='On a road?',
                      result_yes='lines', result_no='carpark'),
     'lines': Question(id='lines', image='yellow_lines.png',
