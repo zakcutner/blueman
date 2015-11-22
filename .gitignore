@@ -2,3 +2,5 @@
 /Lib/
 /Scripts/
 pip-selfcheck.json
+*.pyc
+*.pyd
