@@ -1,5 +1,4 @@
-var uuid;
-var counter = 0;
+var uuid, latitude, longitude, counter = 0;
 
 var question = {
     init: function(details) {
@@ -12,7 +11,13 @@ var question = {
     },
 
     submit: function(answer) {
-        $.post('/api/', {uuid: uuid, question_id: this.question, answer: answer}, function(data) {
+        $.post('/api/', {
+            uuid: uuid,
+            latitude: latitude,
+            longitude: longitude,
+            id: this.question,
+            answer: answer
+        }, function(data) {
             if(data.question) question.init(data.question);
             else if(data.statement) statement.init(data.statement);
         });
@@ -61,13 +66,17 @@ $('#restart').click(function(e) {
 function init() {
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
             $.post('/api/', {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
+                latitude: latitude,
+                longitude: longitude
             }, function(data) {
                 uuid = data.uuid;
                 if(data.question) question.init(data.question);
                 else if(data.statement) statement.init(data.statement);
+                else console.log('The response from the server could not be read!');
             });
         });
     } else {
