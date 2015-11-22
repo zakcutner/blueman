@@ -70,7 +70,7 @@ def start():
             return jsonify(statement=pages['centrallondon'].to_json())
 
         # Return starting question.
-        return jsonify(question=pages['road'].to_json(),
+        return jsonify(question=pages['holder'].to_json(),
                        uuid=user_id)
     else:
         user_id = uuid.UUID(request.form['uuid'])
@@ -87,9 +87,9 @@ def start():
         print(type(pages[new_question]))
 
         if type(pages[new_question]) == Statement:
-            return jsonify(question=pages[new_question].to_json())
-        else:
             return jsonify(statement=pages[new_question].to_json())
+        else:
+            return jsonify(question=pages[new_question].to_json())
 
 
 if __name__ == "__main__":
