@@ -21,9 +21,9 @@ pages = {
                       text='On <strong>single</strong> or <strong>double yellow lines</strong>?', result_yes='3hours',
                       result_no='bays', image='yellow_lines.png'),
 
-    'cityoflondon': Question(id='cityoflondon`', text='With a disabled <strong>Red Badge</strong>?', image='red_badge.png',
+    'cityoflondon': Question(id='cityoflondon', text='With a disabled <strong>Red Badge</strong>?', image='red_badge.png',
                              result_yes='singleyellow_cityoflondon', result_no='disabledbay_cityoflondon'),
-    'disabledbay_cityoflondon': Question(id='disabledbay_cityoflondon', text='In a <strong>disabled bay</strong>?',
+    'disabledbay_cityoflondon': Question(id='disabledbay_cityoflondon', text='In a <strong>disabled bay</strong>?', image='disabled_bay.png',
                                          result_yes='weekdaylimit', result_no='lines_cityoflondon'),
     'lines_cityoflondon': Question(id='lines_cityoflondon', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
                                    result_yes='none', result_no='payanddisplay_cityoflondon'),
@@ -53,14 +53,14 @@ pages = {
     'westminster_resident': Question(id='westminster_resident', text='In a <strong>resident bay</strong>?',
                                      result_yes='uncontrolledhours', result_no='payanddisplay_cityoflondon'),
 
-    'camden': Question(id='camden', text='In a <strong>disabled bay</strong>?',
+    'camden': Question(id='camden', text='In a <strong>disabled bay</strong>?', image='disabled_bay.png',
                        result_yes='unlimited', result_no='camden_greenbadge'),
     'camden_greenbadge': Question(id='camden_greenbadge', text='With a disabled <strong>Green Badge</strong>?', image='green_badge.png',
                                   result_yes='resident_payanddisplay_kensington', result_no='none'),
 
     'bays': Question(id='bays', text='In a <strong>disabled bay</strong>?',
                      result_yes='unlimited', result_no='meters',
-                     image='bays.png'),
+                     image='disabled_bay.png'),
 
     'meters': Question(id='meters',
                        text='At a <strong>parking meter</strong>?',
