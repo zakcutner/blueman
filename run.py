@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 questions = {
     'road': (['road.png'], 'On a road?', 'lines', 'carpark'),
-    'lines': (['single_yellow.png', 'double_yellow.png'], 'On single or double yellow lines?', '3hours', 'meters/bays'),
+    'lines': (['single_yellow.png', 'double_yellow.png'], 'On <strong>single</strong> or <strong>double yellow lines</strong>?', '3hours', 'meters/bays'),
     'meters/bays': (['meters.png', 'bays.png'], 'At a parking meter or marked disabled bay?', 'unlimited', 'none'),
 
     'carpark': (['carpark.png'], 'Check local signage for more information!', '', ''),
