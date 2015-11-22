@@ -6,24 +6,24 @@ var question = {
         this.question = details.id;
 
         $('nav').prepend('<span>' + counter + '</span>');
-        $('.question p').html(details.text);
+        $('.info p').html(details.text);
 
-        if(details.image) $('.question img').attr('src', details.image).show();
-        else $('.question img').hide();
+        if(details.image) $('.info img').attr('src', details.image).show();
+        else $('.info img').hide();
 
-        $('.question').css('opacity', '1');
+        $('.info').css('opacity', '1');
     },
 
     submit: function(answer) {
-        $('.question').css('opacity', '0');
-
-        $.post('/api/', {
-            uuid: uuid,
-            id: this.question,
-            answer: answer
-        }, function(data) {
-            if(data.question) question.init(data.question);
-            else if(data.statement) statement.init(data.statement);
+        $('.info').css('opacity', '0').one('transitionend', function() {
+            $.post('/api/', {
+                uuid: uuid,
+                id: question.question,
+                answer: answer
+            }, function(data) {
+                if(data.question) question.init(data.question);
+                else if(data.statement) statement.init(data.statement);
+            });
         });
     }
 };
@@ -33,24 +33,25 @@ var statement = {
         counter++;
 
         $('nav').prepend('<span>' + counter + '</span>');
-        $('.question p').html(details.text);
+        $('.info p').html(details.text);
 
-        if(details.image) $('.question img').attr('src', details.image).show();
-        else $('.question img').hide();
+        if(details.image) $('.info img').attr('src', details.image).show();
+        else $('.info img').hide();
 
-        $('#yes, #no').hide();
-        $('#restart').show();
+        $('#yes, #no, #question').hide();
+        $('#restart, #statement').show();
 
-        $('.question').css('opacity', '1');
+        $('.info').css('opacity', '1');
     },
 
     submit: function() {
-        $('.question').css('opacity', '0');
-        $('#yes, #no').show();
-        $('#restart').hide();
-        $('nav').empty();
-        counter = 0;
-        init();
+        $('.info').css('opacity', '0').one('transitionend', function() {
+            $('#yes, #no, #question').show();
+            $('#restart, #statement').hide();
+            $('nav').empty();
+            counter = 0;
+            init();
+        });
     }
 };
 

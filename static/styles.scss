@@ -74,7 +74,7 @@ body {
         }
     }
 
-    .question {
+    .info {
         opacity: 0;
         transition: opacity 0.1s ease;
 
@@ -83,6 +83,10 @@ body {
             font-size: 20px;
             text-transform: uppercase;
             color: $secondary;
+
+            &#statement {
+                display: none;
+            }
         }
 
         p {

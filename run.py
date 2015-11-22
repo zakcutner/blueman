@@ -67,15 +67,15 @@ pages = {
     'carpark': Statement(id='carpark',
                          text='Check local signage for more information!',
                          image='carpark.png'),
-    'unlimited': Statement(id='unlimited', text='You can park for free, with no time limit unless signposted.'),
-    '20minutes_dropoff': Statement(id='20minutes_dropoff', text='You can park here for 20 minutes, to pick up or drop off a disabled person.'),
-    '30minutes': Statement(id='30minutes', text='You can park here for up to 30 minutes.'),
-    '4hours': Statement(id='4hours', text='You can park here for up to 4 hours.'),
-    '3hours': Statement(id='3hours', text='You can park for up to 3 hours at a time, leaving 1 hour in between.'),
-    'weekdaylimit': Statement(id='weekdaylimit', text='You can park here for free, but only for four hours on weekdays.'),
-    'none': Statement(id='none', text='You must follow normal restrictions.'),
-    'normalfeewithextension': Statement(id='payanddisplay', text='You must pay the normal fee, but you can stay for an extra hour.'),
-    'uncontrolledhours': Statement(id='uncontrolledhours', text='You can park for free in uncontrolled hours.')
+    'unlimited': Statement(id='unlimited', text='For free, with no time limit unless signposted.'),
+    '20minutes_dropoff': Statement(id='20minutes_dropoff', text='For 20 minutes, to pick up or drop off a disabled person.'),
+    '30minutes': Statement(id='30minutes', text='For up to 30 minutes.'),
+    '4hours': Statement(id='4hours', text='For up to 4 hours.'),
+    '3hours': Statement(id='3hours', text='For up to 3 hours at a time, leaving 1 hour in between.'),
+    'weekdaylimit': Statement(id='weekdaylimit', text='For free, but only for four hours on weekdays.'),
+    'none': Statement(id='none', text='Only if normal restrictions allow you to.'),
+    'normalfeewithextension': Statement(id='payanddisplay', text='If you pay the normal fee, but you can stay for an extra hour.'),
+    'uncontrolledhours': Statement(id='uncontrolledhours', text='For free in uncontrolled hours.')
 }
 
 
