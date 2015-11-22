@@ -4,11 +4,11 @@ var counter = 0;
 var question = {
     init: function(details) {
         counter++;
-        this.question = details[0];
+        this.question = details.id;
 
         $('nav').prepend('<span>' + counter + '</span>');
-        $('.question p').html(details[2]);
-        $('.question img').attr('src', '/static/' + details[1][0]);
+        $('.question p').html(details.text);
+        $('.question img').attr('src', '/static/' + details.image);
     },
 
     submit: function(answer) {
@@ -35,6 +35,7 @@ $('#no').click(function(e) {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             }, function(data) {
+                console.log(data);
                 uuid = data.uuid;
                 question.init(data.question);
             });
