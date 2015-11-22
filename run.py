@@ -15,7 +15,7 @@ pages = {
     'road': Question(id='road', image='road.png', text='On a road?',
                      result_yes='lines', result_no='carpark'),
     'lines': Question(id='lines', image='yellow_lines.png',
-                      text='On single or double yellow lines?', result_yes='3hours',
+                      text='On <strong>single</strong> or <strong>double yellow lines</strong>?', result_yes='3hours',
                       result_no='meters/bays'),
     'meters/bays': Question(id='meters/bays', image='meters/bays.png',
                             text='At a parking meter or marked disabled bay?',
