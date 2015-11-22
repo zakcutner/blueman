@@ -35,8 +35,8 @@ pages = {
                                            result_yes='normalfeewithextension', result_no='none'),
 
     'kensington': Question(id='kensington', text='With a disabled Purple Badge?', image='purple_badge.png',
-                           result_yes='yellow_cityoflondon', result_no='lines_cityoflondon'),
-    'lines_kensington': Question(id='yellow_cityoflondon', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
+                           result_yes='lines_kensington', result_no='lines_cityoflondon'),
+    'lines_kensington': Question(id='lines_kensington', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
                                  result_yes='20minutes_dropoff', result_no='resident_payanddisplay_kensington'),
     'resident_payanddisplay_kensington': Question(id='resident_payanddisplay_kensington', text='In a resident bay or pay and display bay?',
                                                   result_yes='unlimited', result_no='none'),
