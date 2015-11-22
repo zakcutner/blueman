@@ -7,10 +7,16 @@ var question = {
 
         $('nav').prepend('<span>' + counter + '</span>');
         $('.question p').html(details.text);
-        $('.question img').attr('src', details.image);
+
+        if(details.image) $('.question img').attr('src', details.image).show();
+        else $('.question img').hide();
+
+        $('.question').css('opacity', '1');
     },
 
     submit: function(answer) {
+        $('.question').css('opacity', '0');
+
         $.post('/api/', {
             uuid: uuid,
             latitude: latitude,
@@ -31,15 +37,17 @@ var statement = {
         $('nav').prepend('<span>' + counter + '</span>');
         $('.question p').html(details.text);
 
-        if(details.image) $('.question img').attr('src', details.image);
+        if(details.image) $('.question img').attr('src', details.image).show();
         else $('.question img').hide();
 
         $('#yes, #no').hide();
         $('#restart').show();
+
+        $('.question').css('opacity', '1');
     },
 
     submit: function() {
-        $('.question.img').removeAttr('src').show();
+        $('.question').css('opacity', '0');
         $('#yes, #no').show();
         $('#restart').hide();
         $('nav').empty();
