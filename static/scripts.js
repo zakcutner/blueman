@@ -19,8 +19,6 @@ var question = {
 
         $.post('/api/', {
             uuid: uuid,
-            latitude: latitude,
-            longitude: longitude,
             id: this.question,
             answer: answer
         }, function(data) {
