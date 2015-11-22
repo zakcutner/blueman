@@ -25,10 +25,10 @@ pages = {
     'disabledbay_cityoflondon': Question(id='disabledbay_cityoflondon', text='In a <strong>disabled bay</strong>?', image='disabled_bay.png',
                                          result_yes='weekdaylimit', result_no='lines_cityoflondon'),
     'lines_cityoflondon': Question(id='lines_cityoflondon', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
-                                   image='yellow_lines.png', 
+                                   image='yellow_lines.png',
                                    result_yes='none', result_no='payanddisplay_cityoflondon'),
     'singleyellow_cityoflondon': Question(id='singleyellow_cityoflondon', text='On a <strong>single yellow line</strong>?',
-                                          image='single_yellow.png'
+                                          image='single_yellow.png',
                                           result_yes='30minutes', result_no='payanddisplay_cityoflondon_redbadge'),
     'payanddisplay_cityoflondon_redbadge': Question(id='payanddisplay_cityoflondon_redbadge', text='In a <strong>pay and display bay</strong>?',
                                                     image='pay_and_display.png', result_yes='unlimited', result_no='none'),
