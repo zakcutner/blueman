@@ -1,5 +1,4 @@
-var uuid;
-var counter = 0;
+var uuid, latitude, longitude, counter = 0;
 
 var question = {
     init: function(details) {
@@ -8,13 +7,44 @@ var question = {
 
         $('nav').prepend('<span>' + counter + '</span>');
         $('.question p').html(details.text);
-        $('.question img').attr('src', '/static/' + details.image);
+        $('.question img').attr('src', details.image);
     },
 
     submit: function(answer) {
-        $.post('/api/', {uuid: uuid, question_id: this.question, answer: answer}, function(data) {
-            question.init(data.question);
+        $.post('/api/', {
+            uuid: uuid,
+            latitude: latitude,
+            longitude: longitude,
+            id: this.question,
+            answer: answer
+        }, function(data) {
+            if(data.question) question.init(data.question);
+            else if(data.statement) statement.init(data.statement);
         });
+    }
+};
+
+var statement = {
+    init: function(details) {
+        counter++;
+
+        $('nav').prepend('<span>' + counter + '</span>');
+        $('.question p').html(details.text);
+
+        if(details.image) $('.question img').attr('src', details.image);
+        else $('.question img').hide();
+
+        $('#yes, #no').hide();
+        $('#restart').show();
+    },
+
+    submit: function() {
+        $('.question.img').removeAttr('src').show();
+        $('#yes, #no').show();
+        $('#restart').hide();
+        $('nav').empty();
+        counter = 0;
+        init();
     }
 };
 
@@ -28,19 +58,30 @@ $('#no').click(function(e) {
     question.submit(false);
 });
 
-(function() {
+$('#restart').click(function(e) {
+    e.preventDefault();
+    statement.submit();
+});
+
+function init() {
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
             $.post('/api/', {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
+                latitude: latitude,
+                longitude: longitude
             }, function(data) {
-                console.log(data);
                 uuid = data.uuid;
-                question.init(data.question);
+                if(data.question) question.init(data.question);
+                else if(data.statement) statement.init(data.statement);
+                else console.log('The response from the server could not be read!');
             });
         });
     } else {
         console.log('Geolocation has been blocked or is not supported on this device!');
     }
-})();
+}
+
+init();
