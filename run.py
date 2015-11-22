@@ -12,34 +12,38 @@ from models import Question, Statement
 
 pages = {
     'holder': Question(id='holder', text='With a <strong>Blue Badge</strong> holder?',
-                       result_yes='road', result_no='none', image='badge.png'),
+                       result_yes='road', result_no='none', image='blue_badge.png'),
 
     'road': Question(id='road', text='On a <strong>road</strong>?',
                      result_yes='lines', result_no='carpark', image='road.png'),
 
-    'lines': Question(id='lines',
-                      text='On <strong>single</strong> or <strong>double yellow lines</strong>?', result_yes='3hours',
-                      result_no='bays', image='yellow_lines.png'),
+    'lines': Question(id='lines', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
+                      result_yes='3hours', result_no='bays', image='yellow_lines.png'),
 
-    'cityoflondon': Question(id='cityoflondon', text='With a disabled <strong>Red Badge</strong>?', image='red_badge.png',
+    'cityoflondon': Question(id='cityoflondon', text='With a disabled <strong>Red Badge</strong>?',
                              result_yes='singleyellow_cityoflondon', result_no='disabledbay_cityoflondon'),
     'disabledbay_cityoflondon': Question(id='disabledbay_cityoflondon', text='In a <strong>disabled bay</strong>?', image='disabled_bay.png',
                                          result_yes='weekdaylimit', result_no='lines_cityoflondon'),
     'lines_cityoflondon': Question(id='lines_cityoflondon', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
+                                   image='yellow_lines.png', 
                                    result_yes='none', result_no='payanddisplay_cityoflondon'),
     'singleyellow_cityoflondon': Question(id='singleyellow_cityoflondon', text='On a <strong>single yellow line</strong>?',
+                                          image='single_yellow.png'
                                           result_yes='30minutes', result_no='payanddisplay_cityoflondon_redbadge'),
     'payanddisplay_cityoflondon_redbadge': Question(id='payanddisplay_cityoflondon_redbadge', text='In a <strong>pay and display bay</strong>?',
-                                           result_yes='unlimited', result_no='none'),
+                                                    image='pay_and_display.png', result_yes='unlimited', result_no='none'),
     'payanddisplay_cityoflondon': Question(id='payanddisplay_cityoflondon', text='In a <strong>pay and display bay</strong>?',
+                                           image='pay_and_display.png',
                                            result_yes='normalfeewithextension', result_no='none'),
 
-    'kensington': Question(id='kensington', text='With a disabled <strong>Purple Badge</strong>?', image='purple_badge.png',
+    'kensington': Question(id='kensington', text='With a disabled <strong>Purple Badge</strong>?',
                            result_yes='lines_kensington', result_no='lines_cityoflondon'),
     'lines_kensington': Question(id='lines_kensington', text='On <strong>single</strong> or <strong>double yellow lines</strong>?',
+                                 image='yellow_lines.png',
                                  result_yes='20minutes_dropoff', result_no='resident_payanddisplay_kensington'),
     'resident_payanddisplay_kensington': Question(id='resident_payanddisplay_kensington',
                                                   text='In a <strong>resident bay</strong> or <strong>pay and display bay</strong>?',
+                                                  image='pay_and_display.png',
                                                   result_yes='unlimited', result_no='none'),
 
     'westminster': Question(id='westminster', text='On a <strong>single yellow line</strong>?', image='single_yellow.png',
@@ -48,14 +52,14 @@ pages = {
                                          result_yes='none', result_no='westminster_disabledbay'),
     'westminster_disabledbay': Question(id='westminster_disabledbay', text='In a <strong>Blue Badge disabled bay</strong>?', image='disabled_bay.png',
                                         result_yes='4hours', result_no='westminster_whitebadge'),
-    'westminster_whitebadge': Question(id='westminster_whitebadge', text='With a disabled <strong>White Badge</strong>?', image='white_badge.png',
+    'westminster_whitebadge': Question(id='westminster_whitebadge', text='With a disabled <strong>White Badge</strong>?',
                                        result_yes='resident_payanddisplay_kensington', result_no='westminster_resident'),
     'westminster_resident': Question(id='westminster_resident', text='In a <strong>resident bay</strong>?',
                                      result_yes='uncontrolledhours', result_no='payanddisplay_cityoflondon'),
 
     'camden': Question(id='camden', text='In a <strong>disabled bay</strong>?', image='disabled_bay.png',
                        result_yes='unlimited', result_no='camden_greenbadge'),
-    'camden_greenbadge': Question(id='camden_greenbadge', text='With a disabled <strong>Green Badge</strong>?', image='green_badge.png',
+    'camden_greenbadge': Question(id='camden_greenbadge', text='With a disabled <strong>Green Badge</strong>?',
                                   result_yes='resident_payanddisplay_kensington', result_no='none'),
 
     'bays': Question(id='bays', text='In a <strong>disabled bay</strong>?',
