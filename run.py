@@ -55,7 +55,8 @@ def start():
 
         print(r.json())
 
-        district = r.json()['result'][0]['admin_district']
+        # district = r.json()['result'][0]['admin_district']
+        district = 'Barnet'
 
         print("Located in district: {0}".format(district))
 
@@ -77,10 +78,13 @@ def start():
 
         print(request.form['answer'])
 
-        if request.form['answer']:
+        if request.form['answer'] == 'true':
             new_question = pages[current_question].result_yes
         else:
             new_question = pages[current_question].result_no
+
+        print(new_question)
+        print(type(pages[new_question]))
 
         if type(pages[new_question]) == Statement:
             return jsonify(question=pages[new_question].to_json())
