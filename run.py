@@ -1,5 +1,7 @@
+import csv
 import uuid
 import requests
+from geopy.distance import vincenty
 
 from werkzeug.contrib.cache import SimpleCache
 cache = SimpleCache()
@@ -16,10 +18,14 @@ pages = {
                      result_yes='lines', result_no='carpark', image='road.png'),
     'lines': Question(id='lines',
                       text='On <strong>single</strong> or <strong>double yellow lines</strong>?', result_yes='3hours',
-                      result_no='meters/bays', image='yellow_lines.png'),
-    'meters/bays': Question(id='meters/bays',
-                            text='At a parking meter or marked disabled bay?',
-                            result_yes='unlimited', result_no='none', image='meters/bays.png'),
+                      result_no='meters', image='yellow_lines.png'),
+    'bays': Question(id='bays', text='At a marked disabled bay?',
+                     result_yes='unlimited', result_no='meters',
+                     image='bays.png'),
+    'meters': Question(id='meters',
+                       text='At a parking meter?',
+                       result_yes='unlimited', result_no='none',
+                       image='meters.png'),
 
     'carpark': Statement(id='carpark',
                          text='Check local signage for more information!',
@@ -52,7 +58,10 @@ def start():
 
         print(r.json())
 
-        # district = r.json()['result'][0]['admin_district']
+        if r.json()['result']:
+            district = r.json()['result'][0]['admin_district']
+        else:
+            district = ''
         district = 'Barnet'
 
         print("Located in district: {0}".format(district))
@@ -71,7 +80,7 @@ def start():
                        uuid=user_id)
     else:
         user_id = uuid.UUID(request.form['uuid'])
-        current_question = request.form['question_id']
+        current_question = request.form['id']
 
         print(request.form['answer'])
 
@@ -82,6 +91,20 @@ def start():
 
         print(new_question)
         print(type(pages[new_question]))
+
+        if new_question == 'meters':
+            with open('parking.csv', newline='') as csvfile:
+                reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+                for row in reader:
+                    latitude, longitude = row
+                    distance = vincenty((latitude, longitude),
+                                        (request.form['latitude'],
+                                         request.form['longitude'])).miles
+
+                    # If there's a parking bay within 50 meters, do not skip this question.
+                    if distance.miles < 0.03:
+                        new_question = 'bays'
+                        break
 
         if type(pages[new_question]) == Statement:
             return jsonify(statement=pages[new_question].to_json())
