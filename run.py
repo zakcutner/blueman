@@ -10,27 +10,24 @@ app = Flask(__name__)
 from models import Question, Statement
 
 pages = {
-    'holder': Question(id='holder', image='badge.png', text='With a blue badge holder?',
-                       result_yes='road', result_no='none'),
-    'road': Question(id='road', image='road.png', text='On a road?',
-                     result_yes='lines', result_no='carpark'),
-    'lines': Question(id='lines', image='yellow_lines.png',
+    'holder': Question(id='holder', text='With a blue badge holder?',
+                       result_yes='road', result_no='none', image='badge.png'),
+    'road': Question(id='road', text='On a road?',
+                     result_yes='lines', result_no='carpark', image='road.png'),
+    'lines': Question(id='lines',
                       text='On <strong>single</strong> or <strong>double yellow lines</strong>?', result_yes='3hours',
-                      result_no='meters/bays'),
-    'meters/bays': Question(id='meters/bays', image='meters/bays.png',
+                      result_no='meters/bays', image='yellow_lines.png'),
+    'meters/bays': Question(id='meters/bays',
                             text='At a parking meter or marked disabled bay?',
-                            result_yes='unlimited', result_no='none'),
+                            result_yes='unlimited', result_no='none', image='meters/bays.png'),
 
-    'carpark': Statement(id='carpark', image='carpark.png',
-                         text='Check local signage for more information!'),
-    'unlimited': Statement(id='unlimited', image='',
-                           text='You can park for free, with no time limit unless signposted.'),
-    '3hours': Statement(id='3hours', image='',
-                        text='You can park for up to 3 hours at a time, leaving 1 hour in between.'),
-    'none': Statement(id='none', image='',
-                      text='You cannot park in this area.'),
-    'centrallondon': Statement(id='centrallondon', image='',
-                               text='You are in central london.')
+    'carpark': Statement(id='carpark',
+                         text='Check local signage for more information!',
+                         image='carpark.png'),
+    'unlimited': Statement(id='unlimited', text='You can park for free, with no time limit unless signposted.'),
+    '3hours': Statement(id='3hours', text='You can park for up to 3 hours at a time, leaving 1 hour in between.'),
+    'none': Statement(id='none', text='You cannot park in this area.'),
+    'centrallondon': Statement(id='centrallondon', text='You are in central london.')
 }
 
 
