@@ -51,7 +51,7 @@ pages = {
                                         result_yes='4hours', result_no='resident_payanddisplay_kensington'),
 
     'camden': Question(id='camden', text='In a disabled bay?',
-                                   result_yes='unlimited', result_no='camden_greenbadge'),
+                       result_yes='unlimited', result_no='camden_greenbadge'),
     'camden_greenbadge': Question(id='camden_greenbadge', text='With a disabled Green Badge?', image='green_badge.png',
                                   result_yes='resident_payanddisplay_kensington', result_no='none'),
 
@@ -89,6 +89,8 @@ def start():
     if 'uuid' in request.form:
         print(uuid.UUID(request.form['uuid']))
 
+    print(request.form)
+
     if ('uuid' not in request.form):
         # Store unique user ID.
         user_id = uuid.uuid4()
@@ -107,13 +109,13 @@ def start():
 
         # Check for borough (City of London / Kensington and Chelsea / Westminster / Part of Camden)
         if district == 'City of London':
-            return jsonify(question=pages['cityoflondon'].to_json())
+            return jsonify(question=pages['cityoflondon'].to_json(), uuid=user_id)
         elif district == 'Kensington and Chelsea':
-            return jsonify(question=pages['kensington'].to_json())
+            return jsonify(question=pages['kensington'].to_json(), uuid=user_id)
         elif district == 'Westminster':
-            return jsonify(question=pages['westminster'].to_json())
+            return jsonify(question=pages['westminster'].to_json(), uuid=user_id)
         elif district == 'Camden':
-            return jsonify(question=pages['camden'].to_json())
+            return jsonify(question=pages['camden'].to_json(), uuid=user_id)
 
         # Return starting question.
         return jsonify(question=pages['holder'].to_json(),
