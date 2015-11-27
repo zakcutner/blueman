@@ -1,4 +1,4 @@
-var uuid, latitude, longitude, counter = 0;
+var district, latitude, longitude, counter = 0;
 
 var question = {
     init: function(details) {
@@ -17,7 +17,7 @@ var question = {
     submit: function(answer) {
         $('.info').css('opacity', '0').one('transitionend', function() {
             $.post('/api/', {
-                uuid: uuid,
+                district: district,
                 id: question.question,
                 answer: answer
             }, function(data) {
@@ -80,7 +80,7 @@ function init() {
                 latitude: latitude,
                 longitude: longitude
             }, function(data) {
-                uuid = data.uuid;
+                district = data.district;
                 if(data.question) question.init(data.question);
                 else if(data.statement) statement.init(data.statement);
                 else console.log('The response from the server could not be read!');

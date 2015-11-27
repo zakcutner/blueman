@@ -23,10 +23,8 @@ class Page:
 
 
 class Question(Page):
-    def __init__(self, id, text, result_yes, result_no, image=None):
+    def __init__(self, id, text, image=None):
         super().__init__(id, text, image)
-        self.result_yes = result_yes
-        self.result_no = result_no
 
 
 class Statement(Page):
